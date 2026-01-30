@@ -1,0 +1,22 @@
+# Hugo build output
+public/
+resources/
+
+# Hugo cache
+.hugo_build.lock
+
+# Node modules
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vendor cache
+_vendor/

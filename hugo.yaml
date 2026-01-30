@@ -1,0 +1,177 @@
+#=======================================#
+# Basics
+#=======================================#
+baseURL: https://piglet.run/
+title: Piglet Run
+enableRobotsTXT: true
+enableGitInfo: false
+
+#=======================================#
+# Multi-language Configuration
+#=======================================#
+defaultContentLanguage: en
+defaultContentLanguageInSubdir: false
+
+languages:
+  en:
+    languageCode: en
+    languageName: English
+    weight: 1
+    params:
+      description: 'Piglet Run - PostgreSQL Cloud Environment Provisioning Service'
+      time_format_blog: 'January 02, 2006'
+    menu:
+      main:
+        - identifier: docs
+          name: Docs
+          weight: 10
+          url: /docs/
+          pre: <i class='fa-solid fa-book'></i>
+        - identifier: github
+          name: GitHub
+          weight: 100
+          url: https://github.com/pgsty
+          pre: <i class='fab fa-github'></i>
+
+  zh:
+    languageCode: zh-CN
+    languageName: 中文
+    weight: 2
+    params:
+      description: 'Piglet Run - PostgreSQL 云端环境配置服务'
+      time_format_blog: '2006年01月02日'
+    menu:
+      main:
+        - identifier: docs
+          name: 文档
+          weight: 10
+          url: /docs/
+          pre: <i class='fa-solid fa-book'></i>
+        - identifier: github
+          name: GitHub
+          weight: 100
+          url: https://github.com/pgsty
+          pre: <i class='fab fa-github'></i>
+
+#=======================================#
+# Hugo Module (replaces theme: docsy)
+#=======================================#
+module:
+  proxy: direct
+  hugoVersion:
+    extended: true
+    min: "0.146.0"
+  imports:
+    - path: github.com/google/docsy
+      disable: false
+
+#=======================================#
+# Taxonomies Support
+#=======================================#
+taxonomies:
+  categories: categories
+  tags: tags
+
+#=======================================#
+# Image processing configuration
+#=======================================#
+imaging:
+  resampleFilter: CatmullRom
+  quality: 75
+  anchor: smart
+
+#=======================================#
+# Markdown Configuration
+#=======================================#
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+    renderer:
+      unsafe: true
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block: [['\[', '\]'], ['$$', '$$']]
+          inline: [['\(', '\)']]
+  highlight:
+    style: tango
+    codeFences: true
+    noClasses: true
+
+#=======================================#
+# Outputs
+#=======================================#
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+  section:
+    - HTML
+    - RSS
+    - print
+
+#=======================================#
+# Site Params
+#=======================================#
+params:
+  version: 1.0.0
+  copyright:
+    authors: Ruohang Feng
+    from_year: 2025
+  privacy_policy: /docs/about/privacy
+
+  # Time format
+  time_format_default: '2006-01-02'
+
+  # Project info
+  archived_version: false
+  url_latest_version: 'https://piglet.run'
+  github_repo: 'https://github.com/pgsty'
+  github_project_repo: 'https://github.com/pgsty'
+
+  # Search
+  offlineSearch: true
+  prism_syntax_highlighting: false
+
+  # UI settings
+  ui:
+    breadcrumb_disable: false
+    navbar_logo: true
+    navbar_translucent_over_cover_disable: false
+    sidebar_menu_compact: true
+    sidebar_search_disable: false
+    sidebar_menu_foldable: true
+    sidebar_cache_limit: 1000
+    ul_show: 1
+    showLightDarkModeMenu: true
+
+    feedback:
+      enable: false
+
+    readingtime:
+      enable: false
+
+  # Links
+  links:
+    user:
+      - name: Email
+        url: 'mailto:rh@vonng.com'
+        icon: fa fa-envelope
+        desc: Contact us
+      - name: GitHub
+        url: 'https://github.com/pgsty'
+        icon: fab fa-github
+        desc: GitHub Repository
+    developer:
+      - name: Discord
+        url: 'https://discord.gg/wDzt5VyWEz'
+        icon: fab fa-discord
+        desc: Discord channel
+      - name: GitHub
+        url: 'https://github.com/pgsty'
+        icon: fab fa-github
+        desc: Project Repository

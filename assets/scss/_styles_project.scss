@@ -1,0 +1,22 @@
+// Custom styles for Piglet Run
+
+// Adjust content max width on larger screens
+.td-max-width-on-larger-screens {
+  @include media-breakpoint-up(lg) {
+    max-width: 90%;
+  }
+}
+
+// Add spacing and separator before feedback section
+.feedback--title {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #dee2e6;
+}
+
+// Widen the left sidebar on desktop
+@include media-breakpoint-up(xl) {
+  .td-sidebar__inner {
+    flex: 0 1 380px !important;
+  }
+}
