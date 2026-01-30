@@ -22,14 +22,14 @@ sidebar_expanded: true
 
 ## 主题
 
-| 主题 | 描述 |
-|------|------|
-| [安装](/docs/tutorial/install/) | 在全新服务器上安装 Piglet Run |
-| [快速开始](/docs/tutorial/quickstart/) | Piglet Run 的前 5 分钟 |
-| [VS Code](/docs/tutorial/vscode/) | 网页版 VS Code 教程 |
-| [Jupyter](/docs/tutorial/jupyter/) | 数据科学的 JupyterLab |
-| [Claude Code](/docs/tutorial/claude/) | 使用 Claude 进行 AI 编码 |
-| [数据库](/docs/tutorial/database/) | PostgreSQL 基础 |
-| [应用](/docs/tutorial/application/) | 构建和部署应用 |
+| 主题                                    | 描述                   |
+|---------------------------------------|----------------------|
+| [安装](/docs/tutorial/install/)         | 在全新服务器上安装 Piglet Run |
+| [快速开始](/docs/tutorial/quickstart/)    | Piglet Run 的前 5 分钟   |
+| [VS Code](/docs/tutorial/vscode/)     | 网页版 VS Code 教程       |
+| [Jupyter](/docs/tutorial/jupyter/)    | 数据科学的 JupyterLab     |
+| [Claude Code](/docs/tutorial/claude/) | 使用 Claude 进行 AI 编码   |
+| [数据库](/docs/tutorial/database/)       | PostgreSQL 基础        |
+| [应用](/docs/tutorial/application/)     | 构建和部署应用              |
 
 /Users/vonng/pgsty/piglet.run/static/img/logo/piglet.png
