@@ -26,7 +26,7 @@ This tutorial guides you through installing Piglet Run on a fresh server.
 curl -fsSL https://repo.pigsty.io/pig | bash
 
 # China Mirror
-curl -fsSL https://repo.pigsty.cc/pig | bash
+curl -fsSL https://repo.pigsty.io/pig | bash
 ```
 
 ### 2. Setup Repositories

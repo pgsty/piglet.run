@@ -18,7 +18,7 @@ The `pig` CLI provides complete control over PostgreSQL installation, extension 
 curl -fsSL https://repo.pigsty.io/pig | bash
 
 # China Mirror
-curl -fsSL https://repo.pigsty.cc/pig | bash
+curl -fsSL https://repo.pigsty.io/pig | bash
 ```
 
 Verify installation:

@@ -20,3 +20,8 @@ Thumbs.db
 
 # Vendor cache
 _vendor/
+temp/
+
+_bmad
+_bmad-output
+.claude
