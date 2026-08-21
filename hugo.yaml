@@ -13,6 +13,10 @@ capitalizeListTitles: false
 pagination:
   pagerSize: 20
 
+services:
+  googleAnalytics:
+    ID: G-W57GPGG6XX
+
 #=======================================#
 # Oink 0.6
 #=======================================#
@@ -148,6 +152,22 @@ params:
   github_branch: main
   archived_version: false
   url_latest_version: https://piglet.run/
+
+  comments:
+    enable: true
+    type: giscus
+
+    # https://giscus.app/ - GitHub Discussions on pgsty/piglet.run
+    giscus:
+      repo: "pgsty/piglet.run"
+      repoId: "R_kgDORAZzTw"
+      category: "Announcements"
+      categoryId: "DIC_kwDORAZzT84DD3xs"
+      mapping: pathname
+      strict: 0
+      reactionsEnabled: 1
+      emitMetadata: 0
+      inputPosition: bottom
 
   offline_search: true
   offline_search_index: summary
