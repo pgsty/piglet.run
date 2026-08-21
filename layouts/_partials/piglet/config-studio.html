@@ -1,0 +1,130 @@
+{{- $zh := eq .Site.Language.Lang "zh" -}}
+<section class="piglet-studio" id="studio" aria-labelledby="studio-title" data-config-studio data-lang="{{ .Site.Language.Lang }}">
+  <div class="piglet-wrap">
+    <div class="piglet-studio__head" data-reveal>
+      <div class="piglet-head">
+        <p class="piglet-eyebrow">{{ if $zh }}配置工作台{{ else }}Config Studio{{ end }}</p>
+        <h2 id="studio-title">{{ if $zh }}先拼出你要的机器，<br>再把配置带走{{ else }}Compose the machine,<br>then take the file{{ end }}</h2>
+        <p class="piglet-head__lede">{{ if $zh }}选择规模、主机、PostgreSQL 与要预装的能力，实时生成可以直接部署的 Pigsty 配置。{{ else }}Choose the footprint, the host, the PostgreSQL profile, and what gets preinstalled. Deployable Pigsty configuration is written as you go.{{ end }}</p>
+      </div>
+      <p class="piglet-studio__note">
+        <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
+        {{ if $zh }}只在你的浏览器里生成，不上传{{ else }}Generated in your browser. Nothing is uploaded.{{ end }}
+      </p>
+    </div>
+
+    <div class="piglet-studio-shell" data-reveal>
+      <form class="piglet-controls" data-config-form>
+        <fieldset>
+          <legend class="piglet-control-label">{{ if $zh }}运行规模{{ else }}Footprint{{ end }}</legend>
+          <div class="piglet-profile-row">
+            <label class="piglet-profile">
+              <input type="radio" name="profile" value="solo" checked>
+              <b>{{ if $zh }}个人开发{{ else }}Solo dev{{ end }}</b>
+              <small>2C · 4G</small>
+            </label>
+            <label class="piglet-profile">
+              <input type="radio" name="profile" value="team">
+              <b>{{ if $zh }}团队空间{{ else }}Team space{{ end }}</b>
+              <small>4C · 8G</small>
+            </label>
+            <label class="piglet-profile">
+              <input type="radio" name="profile" value="production">
+              <b>{{ if $zh }}生产节点{{ else }}Production{{ end }}</b>
+              <small>8C · 16G</small>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="piglet-control-label">{{ if $zh }}主机与数据{{ else }}Host and data{{ end }}</legend>
+          <div class="piglet-field-grid">
+            <label class="piglet-field">
+              <span>{{ if $zh }}主机地址{{ else }}Node address{{ end }}</span>
+              <input name="admin_ip" value="10.10.10.10" inputmode="decimal" autocomplete="off" spellcheck="false" data-validate="host">
+            </label>
+            <label class="piglet-field">
+              <span>{{ if $zh }}访问域名{{ else }}Portal domain{{ end }}</span>
+              <input name="domain" value="piglet.local" autocomplete="off" spellcheck="false" data-validate="domain">
+            </label>
+            <label class="piglet-field">
+              <span>{{ if $zh }}软件源区域{{ else }}Package region{{ end }}</span>
+              <select name="region">
+                <option value="default">{{ if $zh }}全球 / 默认{{ else }}Global / default{{ end }}</option>
+                <option value="china">{{ if $zh }}中国大陆{{ else }}China{{ end }}</option>
+                <option value="europe">{{ if $zh }}欧洲{{ else }}Europe{{ end }}</option>
+              </select>
+            </label>
+            <label class="piglet-field">
+              <span>PostgreSQL</span>
+              <select name="pg_version">
+                <option value="18" selected>PostgreSQL 18</option>
+                <option value="17">PostgreSQL 17</option>
+                <option value="16">PostgreSQL 16</option>
+              </select>
+            </label>
+            <label class="piglet-field">
+              <span>{{ if $zh }}工作负载{{ else }}Workload{{ end }}</span>
+              <select name="workload">
+                <option value="oltp" selected>OLTP / web app</option>
+                <option value="rag">RAG / vector</option>
+                <option value="olap">OLAP / analytics</option>
+                <option value="tiny">{{ if $zh }}Tiny / 小内存{{ else }}Tiny / low memory{{ end }}</option>
+              </select>
+            </label>
+            <label class="piglet-field">
+              <span>{{ if $zh }}工作空间{{ else }}Workspace{{ end }}</span>
+              <select name="workspace">
+                <option value="/fs" selected>/fs — JuiceFS</option>
+                <option value="/data">/data — local disk</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="piglet-control-label">{{ if $zh }}预装能力{{ else }}Preinstalled{{ end }}</legend>
+          <div class="piglet-chip-row">
+            <label class="piglet-chip"><input type="checkbox" name="claude" checked>AI agent context</label>
+            <label class="piglet-chip"><input type="checkbox" name="code" checked>VS Code</label>
+            <label class="piglet-chip"><input type="checkbox" name="jupyter" checked>Jupyter</label>
+            <label class="piglet-chip"><input type="checkbox" name="grafana" checked>Grafana</label>
+            <label class="piglet-chip"><input type="checkbox" name="juicefs" checked>JuiceFS</label>
+            <label class="piglet-chip"><input type="checkbox" name="minio">S3 / MinIO</label>
+          </div>
+        </fieldset>
+
+        <div class="piglet-form-foot">
+          <p>{{ if $zh }}密码与网络策略请在部署前再确认一遍。{{ else }}Check passwords and network policy before you deploy.{{ end }}</p>
+          <button type="reset" class="piglet-reset"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>{{ if $zh }}恢复默认{{ else }}Reset{{ end }}</button>
+        </div>
+      </form>
+
+      <div class="piglet-output" aria-label="{{ if $zh }}生成结果{{ else }}Generated output{{ end }}">
+        <div class="piglet-output__bar">
+          <div class="piglet-output__tabs" role="tablist" aria-label="{{ if $zh }}生成结果类型{{ else }}Output type{{ end }}">
+            <button type="button" role="tab" aria-selected="true" data-config-tab="yaml">pigsty.yml</button>
+            <button type="button" role="tab" aria-selected="false" data-config-tab="install">install.sh</button>
+            <button type="button" role="tab" aria-selected="false" data-config-tab="services">services.txt</button>
+          </div>
+          <div class="piglet-output__actions">
+            <button type="button" data-config-copy title="{{ if $zh }}复制内容{{ else }}Copy output{{ end }}"><i class="fa-regular fa-copy" aria-hidden="true"></i><span>{{ if $zh }}复制{{ else }}Copy{{ end }}</span></button>
+            <button type="button" data-config-download title="{{ if $zh }}下载文件{{ else }}Download file{{ end }}"><i class="fa-solid fa-download" aria-hidden="true"></i><span>{{ if $zh }}下载{{ else }}Download{{ end }}</span></button>
+          </div>
+        </div>
+
+        <div class="piglet-output__view">
+          <pre tabindex="0"><code data-config-output aria-live="polite"></code></pre>
+        </div>
+
+        <div class="piglet-output__foot">
+          <span class="piglet-output__status" data-config-status><i aria-hidden="true"></i><span>{{ if $zh }}配置有效{{ else }}VALID CONFIG{{ end }}</span></span>
+          <span data-config-summary>{{ if $zh }}5 个能力 · 1 台主机{{ else }}5 capabilities · 1 node{{ end }}</span>
+          <span class="piglet-output__save"><b data-config-filename>pigsty.yml</b><em data-config-hint>{{ if $zh }}审阅后即可部署{{ else }}review it, then deploy{{ end }}</em></span>
+        </div>
+      </div>
+    </div>
+
+    <noscript><p class="piglet-noscript">{{ if $zh }}启用 JavaScript 后可以实时生成、复制并下载配置。{{ else }}Enable JavaScript to generate, copy, and download the configuration.{{ end }}</p></noscript>
+  </div>
+</section>

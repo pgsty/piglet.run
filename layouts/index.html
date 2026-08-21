@@ -1,538 +1,278 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.Language.Lang }}" class="no-js">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{- /* Piglet landing page — "one machine, cross-sectioned".
+     Oink owns the navbar, search, language selector, and theme toggle. */ -}}
+{{ define "main" }}
+{{- $zh := eq .Site.Language.Lang "zh" -}}
+{{- $mascot := resources.Get "img/piglet-run.png" -}}
+{{- $mascotWebp := $mascot.Resize "556x webp q88 lanczos" -}}
+<div class="piglet-landing">
 
-  <title>{{ .Title }} - {{ .Site.Title }}</title>
-  <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+  {{/* ------------------------------------------------------------------ hero */}}
+  <section class="piglet-hero" aria-labelledby="hero-title">
+    <div class="piglet-backdrop" aria-hidden="true">
+      <span class="piglet-backdrop__grid"></span>
+      <span class="piglet-backdrop__glow piglet-backdrop__glow--pink"></span>
+      <span class="piglet-backdrop__glow piglet-backdrop__glow--blue"></span>
+    </div>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/img/logo/piglet256.png">
-  <link rel="apple-touch-icon" href="/img/logo/piglet256.png">
+    <div class="piglet-wrap piglet-hero__inner">
+      <div class="piglet-hero__copy">
+        <p class="piglet-meta piglet-hero__tag piglet-rise" style="--d: 0">
+          <span>Apache-2.0</span><em>/</em><span>{{ if $zh }}基于 Pigsty{{ else }}built on Pigsty{{ end }}</span><em>/</em><span>{{ if $zh }}单机部署{{ else }}one Linux node{{ end }}</span>
+        </p>
 
-  <!-- Safari/iOS theme color -->
-  <meta name="theme-color" content="#0f1419">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <h1 class="piglet-hero__title piglet-rise" id="hero-title" style="--d: 1">
+          <span class="piglet-wordmark">Piglet</span>
+          <span class="piglet-hero__claim">{{ if $zh }}面向 Agent 的<br>Postgres 运行时{{ else }}The agentic<br>Postgres runtime{{ end }}</span>
+        </h1>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Title }}">
-  <meta property="og:description" content="{{ .Description | default .Site.Params.description }}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ .Permalink }}">
+        <p class="piglet-hero__slogan piglet-rise" style="--d: 2">{{ if $zh }}放心写，立刻上线。{{ else }}Code fearlessly. Ship instantly.{{ end }}</p>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+        <p class="piglet-hero__lede piglet-rise" style="--d: 3">
+          {{ if $zh }}在一台 Linux 主机上装一次：AI 编程工具、生产级 PostgreSQL、存进数据库的文件系统、完整可观测性，以及做完就能上线的 HTTPS 交付。{{ else }}Install once on one Linux machine: AI coding tools, production PostgreSQL, a filesystem that lives in the database, full observability, and HTTPS delivery the moment something works.{{ end }}
+        </p>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- Landing Page CSS -->
-  <link rel="stylesheet" href="/css/landing.css">
-
-  <!-- Custom Piglet Styles -->
-  <style>
-    :root {
-      --piglet-pink: #E83E8C;
-      --piglet-pink-dark: #c42e73;
-      --piglet-purple: #6f42c1;
-    }
-    .hero-title-accent {
-      background: linear-gradient(135deg, var(--piglet-pink) 0%, var(--piglet-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--piglet-pink) 0%, var(--piglet-purple) 100%);
-      border: none;
-    }
-    .btn-primary:hover {
-      background: linear-gradient(135deg, var(--piglet-pink-dark) 0%, #5a32a3 100%);
-    }
-    .feature-emoji {
-      font-size: 1.2em;
-    }
-    .pain-icon {
-      font-size: 3rem;
-    }
-    .kernel-card-new:hover {
-      border-color: var(--piglet-pink);
-    }
-    .nav-brand .nav-title {
-      background: linear-gradient(135deg, var(--piglet-pink) 0%, var(--piglet-purple) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-  </style>
-</head>
-<body class="landing-page">
-
-  <!-- Navigation Header -->
-  <header class="landing-header">
-    <div class="landing-container">
-      <nav class="landing-nav">
-        <a href="/" class="nav-brand">
-          <img src="/img/logo/piglet256.png" alt="Piglet" class="nav-logo" style="height: 100px; width: auto;">
-          <span class="nav-title">PIGLET RUN</span>
-        </a>
-
-        <div class="nav-links">
-          <a href="/docs/" class="nav-link">{{ if eq .Site.Language.Lang "zh" }}文档{{ else }}Docs{{ end }}</a>
-          <a href="https://pigsty.io" class="nav-link" target="_blank">Pigsty</a>
-          <a href="https://github.com/pgsty" class="nav-link nav-link--icon" target="_blank" title="GitHub">
-            <i class="fab fa-github"></i>
+        <div class="piglet-cta piglet-rise" style="--d: 4">
+          <a class="piglet-btn piglet-btn--primary" href="#studio">
+            {{ if $zh }}打开配置工作台{{ else }}Open Config Studio{{ end }}
+            <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
           </a>
-          {{ if hugo.IsMultilingual }}
-          <a href="{{ if eq .Site.Language.Lang "zh" }}/{{ else }}/zh/{{ end }}" class="nav-link nav-link--icon" title="{{ if eq .Site.Language.Lang "zh" }}English{{ else }}中文{{ end }}">
-            <i class="fas fa-language"></i>
+          <a class="piglet-btn piglet-btn--quiet" href="{{ relLangURL "docs/tutorial/quickstart/" }}">
+            {{ if $zh }}五分钟上手{{ else }}5-minute quickstart{{ end }}
           </a>
-          {{ end }}
         </div>
 
-        <button class="mobile-menu-toggle" aria-label="Menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
+        <dl class="piglet-figures piglet-rise" style="--d: 5">
+          <div><dt>PostgreSQL</dt><dd>18</dd></div>
+          <div><dt>{{ if $zh }}个扩展插件{{ else }}extensions{{ end }}</dt><dd>500+</dd></div>
+          <div><dt>{{ if $zh }}台机器{{ else }}machine{{ end }}</dt><dd>1</dd></div>
+        </dl>
+      </div>
+
+      <div class="piglet-hero__machine">
+        <img class="piglet-mascot piglet-rise" style="--d: 6"
+             src="{{ $mascotWebp.RelPermalink }}"
+             width="{{ $mascotWebp.Width }}" height="{{ $mascotWebp.Height }}"
+             alt="{{ if $zh }}戴风镜、拖着彩虹尾焰飞奔的 Piglet 小猪{{ else }}The Piglet mascot flying with a rainbow trail{{ end }}">
+
+        <figure class="piglet-machine" aria-label="{{ if $zh }}单机运行时分层结构{{ else }}Runtime layers on a single machine{{ end }}">
+          <figcaption class="piglet-machine__bar">
+            <span class="piglet-machine__id"><i aria-hidden="true"></i>piglet@one-node</span>
+            <span class="piglet-machine__state">READY</span>
+          </figcaption>
+
+          <ol class="piglet-stack">
+            <li class="piglet-layer" data-layer="web" style="--i: 3">
+              <b>WEB</b><span>Nginx portal · auto HTTPS</span><i>:443</i>
+            </li>
+            <li class="piglet-layer" data-layer="dev" style="--i: 2">
+              <b>DEV</b><span>VS&nbsp;Code · JupyterLab · Docker</span><i>/code</i>
+            </li>
+            <li class="piglet-layer" data-layer="ai" style="--i: 1">
+              <b>AI</b><span>Claude Code · OpenCode · AGENTS.md</span><i>tty</i>
+            </li>
+            <li class="piglet-layer" data-layer="fs" style="--i: 0">
+              <b>FS</b><span>JuiceFS workspace</span><i>/fs</i>
+            </li>
+          </ol>
+
+          <div class="piglet-seam">
+            <span class="piglet-seam__rail" aria-hidden="true"></span>
+            <span class="piglet-seam__label">{{ if $zh }}全都落在这里{{ else }}everything lands here{{ end }}</span>
+          </div>
+
+          <div class="piglet-core">
+            <b>PostgreSQL&nbsp;18</b>
+            <span>{{ if $zh }}数据 · 文件 · 状态 · 记忆{{ else }}data · files · state · memory{{ end }}</span>
+            <i>:5432</i>
+          </div>
+
+          <div class="piglet-machine__base">
+            <span><b>OPS</b>VictoriaMetrics · Grafana</span>
+            <i>/ui</i>
+          </div>
+        </figure>
+      </div>
     </div>
-  </header>
+  </section>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <a href="/docs/" class="mobile-menu-link">{{ if eq .Site.Language.Lang "zh" }}文档{{ else }}Docs{{ end }}</a>
-    <a href="https://pigsty.io" class="mobile-menu-link" target="_blank">Pigsty</a>
-    <a href="https://github.com/pgsty" class="mobile-menu-link" target="_blank">
-      <i class="fab fa-github"></i> GitHub
-    </a>
-  </div>
+  {{ partial "piglet/config-studio.html" . }}
 
+  {{/* ----------------------------------------------------------- capabilities */}}
+  <section class="piglet-why" id="why" aria-labelledby="why-title">
+    <div class="piglet-wrap">
+      <header class="piglet-head piglet-head--split" data-reveal>
+        <p class="piglet-eyebrow">{{ if $zh }}为什么是 Piglet{{ else }}Why Piglet{{ end }}</p>
+        <h2 id="why-title">{{ if $zh }}不是又一套工具链，<br>而是一个完整的世界{{ else }}Not another toolchain.<br>One world.{{ end }}</h2>
+        <p class="piglet-head__lede">{{ if $zh }}不用在笔记本、容器、托管平台和另一处的数据库之间搬运上下文。所有东西都在一台机器上，靠同一个 PostgreSQL 撑着。{{ else }}No context ferrying between a laptop, containers, a hosting platform, and a database somewhere else. It all sits on one machine, standing on one PostgreSQL.{{ end }}</p>
+      </header>
 
-  <!-- Section 1: Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-container">
-      <div class="hero-left">
-        {{ if eq .Site.Language.Lang "zh" }}
-        <h1 class="hero-title animate-fade-in-up">
-          <span class="hero-title-main">小猪运行时</span>
-          <span class="hero-title-accent">Piglet Run</span>
-        </h1>
-        <p class="hero-subtitle animate-fade-in-up animate-delay-100">
-          为 AI Web Coding 打造的云端编码沙箱
-        </p>
-        {{ else }}
-        <h1 class="hero-title animate-fade-in-up">
-          <span class="hero-title-main">Cloud Coding Sandbox</span>
-          <span class="hero-title-accent">Piglet Run</span>
-        </h1>
-        <p class="hero-subtitle animate-fade-in-up animate-delay-100">
-          AI-Powered Development Environment with PostgreSQL
-        </p>
-        {{ end }}
+      <div class="piglet-panels">
+        <article class="piglet-panel piglet-panel--wide" data-hue="ai" data-reveal>
+          <div class="piglet-panel__body">
+            <h3>{{ if $zh }}人和 Agent 待在同一个世界{{ else }}Humans and agents live in the same world{{ end }}</h3>
+            <p>{{ if $zh }}Agent 拿到的不是环境的转述，而是环境本身：同一份文件、同一个数据库、同一份日志、同一批地址。<code>CLAUDE.md</code> 与 <code>AGENTS.md</code> 已经写好，机器会自我介绍。{{ else }}Your agent doesn't get a description of the environment, it gets the environment: same files, same database, same logs, same URLs. <code>CLAUDE.md</code> and <code>AGENTS.md</code> ship pre-written, so the machine explains itself.{{ end }}</p>
+          </div>
+          <div class="piglet-wire" aria-hidden="true">
+            <span class="piglet-wire__actor"><i class="fa-solid fa-user"></i>HUMAN</span>
+            <span class="piglet-wire__link"></span>
+            <span class="piglet-wire__node">one-node<b>/fs&nbsp;·&nbsp;:5432</b></span>
+            <span class="piglet-wire__link piglet-wire__link--flip"></span>
+            <span class="piglet-wire__actor"><i class="fa-solid fa-robot"></i>AGENT</span>
+          </div>
+        </article>
 
-        <div class="command-box animate-fade-in-up animate-delay-200">
-          <span class="command-prompt">$</span>
-          <code class="command-text">curl -fsSL https://repo.pigsty.io/get | bash</code>
-          <button class="command-copy" title="{{ if eq .Site.Language.Lang "zh" }}复制命令{{ else }}Copy command{{ end }}">
-            <i class="fas fa-copy"></i>
+        <article class="piglet-panel" data-hue="fs" data-reveal>
+          <div class="piglet-panel__body">
+            <h3>{{ if $zh }}文件系统就是一张表{{ else }}Your filesystem is a table{{ end }}</h3>
+            <p>{{ if $zh }}JuiceFS 把工作空间放进 PostgreSQL，<code>/fs</code> 与数据库一起备份、恢复、克隆——只有一份东西需要保护。{{ else }}JuiceFS keeps the workspace inside PostgreSQL, so <code>/fs</code> backs up, restores, and forks with the database. One thing to protect, not two.{{ end }}</p>
+          </div>
+          <div class="piglet-flow" aria-hidden="true">
+            <code>/fs/app.py</code>
+            <span class="piglet-flow__arrow"></span>
+            <code class="piglet-flow__sink">postgres://one-node:5432/meta</code>
+          </div>
+        </article>
+
+        <article class="piglet-panel" data-hue="dev" data-reveal>
+          <div class="piglet-panel__body">
+            <h3>{{ if $zh }}回到任意一秒{{ else }}Roll back to any second{{ end }}</h3>
+            <p>{{ if $zh }}pgBackRest PITR 加文件系统快照。让 Agent 大胆去试，安全网是真的。{{ else }}pgBackRest PITR plus filesystem snapshots. Let the agent try the reckless thing; the safety net is real.{{ end }}</p>
+          </div>
+          <div class="piglet-track" aria-hidden="true">
+            <span class="piglet-track__line"></span>
+            <i style="--p: 6%"></i><i style="--p: 27%"></i><i style="--p: 48%"></i><i style="--p: 69%"></i>
+            <b style="--p: 90%">now</b>
+          </div>
+        </article>
+
+        <article class="piglet-panel" data-hue="ops" data-reveal>
+          <div class="piglet-panel__body">
+            <h3>{{ if $zh }}克隆整个世界，不只是仓库{{ else }}Fork the world, not just the repo{{ end }}</h3>
+            <p>{{ if $zh }}写时复制克隆，让每个分支、每个 Agent 在同一台机器上几秒内拿到自己的数据库和工作空间。{{ else }}Copy-on-write clones give every branch, and every agent, its own database and workspace in seconds on the same machine.{{ end }}</p>
+          </div>
+          <div class="piglet-fork" aria-hidden="true">
+            <span>main</span><span>agent-1</span><span>agent-2</span>
+          </div>
+        </article>
+
+        <article class="piglet-panel" data-hue="web" data-reveal>
+          <div class="piglet-panel__body">
+            <h3>{{ if $zh }}从 localhost 到 HTTPS，不交平台税{{ else }}From localhost to HTTPS, no platform tax{{ end }}</h3>
+            <p>{{ if $zh }}Nginx Portal 负责域名、TLS 终止、证书续期和服务路由。应用和数据始终在你自己的机器上。{{ else }}Nginx Portal binds the domain, terminates TLS, renews certificates, and routes every service. The app and the data stay on your machine.{{ end }}</p>
+          </div>
+          <a class="piglet-link" href="{{ relLangURL "docs/task/deploy/" }}">{{ if $zh }}了解交付流程{{ else }}See the delivery workflow{{ end }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  {{/* ---------------------------------------------------------- observability */}}
+  <section class="piglet-observe" aria-labelledby="observe-title">
+    <div class="piglet-wrap piglet-observe__grid">
+      <div class="piglet-observe__copy" data-reveal>
+        <p class="piglet-eyebrow">{{ if $zh }}可观测性{{ else }}Observability{{ end }}</p>
+        <h2 id="observe-title">{{ if $zh }}Agent 做了什么，机器有什么感觉，都看得见{{ else }}See what the agent did, and what the machine felt{{ end }}</h2>
+        <p>{{ if $zh }}从 Claude Code 的使用量，到 PostgreSQL 的慢查询、主机负载、日志与告警，Piglet 直接继承 Pigsty 久经生产考验的可观测性体系。{{ else }}From Claude Code usage down to slow queries, host load, logs, and alerts, Piglet inherits the observability stack Pigsty already runs in production.{{ end }}</p>
+        <ul class="piglet-checks">
+          <li>{{ if $zh }}开箱采集 3000+ 项指标{{ else }}3,000+ metrics collected out of the box{{ end }}</li>
+          <li>{{ if $zh }}数据库、主机、应用同一个视角{{ else }}One view across database, host, and application{{ end }}</li>
+          <li>{{ if $zh }}专门的 AI 编码活动仪表盘{{ else }}A dashboard dedicated to AI coding activity{{ end }}</li>
+        </ul>
+        <a class="piglet-link" href="{{ relLangURL "docs/concept/monitor/" }}">{{ if $zh }}查看监控设计{{ else }}Explore observability{{ end }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+
+      <figure class="piglet-screen" data-reveal>
+        <div class="piglet-screen__bar">
+          <span class="piglet-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <b>{{ if $zh }}监控台{{ else }}grafana{{ end }}</b>
+          <em>LIVE</em>
+        </div>
+        <img src="{{ "img/dashboard.jpg" | relURL }}" width="2400" height="1148" loading="lazy"
+             alt="{{ if $zh }}Pigsty Grafana 监控仪表盘集合{{ else }}A wall of Pigsty Grafana monitoring dashboards{{ end }}">
+      </figure>
+    </div>
+  </section>
+
+  {{/* ------------------------------------------------------------------ docs */}}
+  <section class="piglet-learn" id="learn" aria-labelledby="learn-title">
+    <div class="piglet-wrap">
+      <header class="piglet-head piglet-head--split" data-reveal>
+        <p class="piglet-eyebrow">{{ if $zh }}文档{{ else }}Documentation{{ end }}</p>
+        <h2 id="learn-title">{{ if $zh }}从你手上的问题开始{{ else }}Start from the question you already have{{ end }}</h2>
+        <p class="piglet-head__lede">{{ if $zh }}教程、任务、概念、参考四条路径，不用先学会“怎么读这份文档”。{{ else }}Four paths — tutorial, task, concept, reference — so nobody has to learn how to read the documentation first.{{ end }}</p>
+      </header>
+
+      <div class="piglet-paths">
+        <a class="piglet-path" href="{{ relLangURL "docs/tutorial/" }}" data-reveal>
+          <span class="piglet-meta">{{ if $zh }}教程{{ else }}Tutorial{{ end }}</span>
+          <h3>{{ if $zh }}带我走一遍{{ else }}Walk me through it{{ end }}</h3>
+          <p>{{ if $zh }}从安装到第一个数据应用，一步一步来。{{ else }}Install to first data application, one step at a time.{{ end }}</p>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="piglet-path" href="{{ relLangURL "docs/task/" }}" data-reveal>
+          <span class="piglet-meta">{{ if $zh }}任务{{ else }}Task{{ end }}</span>
+          <h3>{{ if $zh }}帮我把事做完{{ else }}Help me get it done{{ end }}</h3>
+          <p>{{ if $zh }}备份、恢复、迁移、绑定域名、签发证书、上线。{{ else }}Back up, restore, migrate, bind a domain, issue certs, ship.{{ end }}</p>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="piglet-path" href="{{ relLangURL "docs/concept/" }}" data-reveal>
+          <span class="piglet-meta">{{ if $zh }}概念{{ else }}Concept{{ end }}</span>
+          <h3>{{ if $zh }}讲讲它怎么工作{{ else }}Explain how it works{{ end }}</h3>
+          <p>{{ if $zh }}架构、存储、克隆、安全与监控背后的设计。{{ else }}The design behind architecture, storage, cloning, security, monitoring.{{ end }}</p>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <a class="piglet-path" href="{{ relLangURL "docs/reference/" }}" data-reveal>
+          <span class="piglet-meta">{{ if $zh }}参考{{ else }}Reference{{ end }}</span>
+          <h3>{{ if $zh }}直接给我参数{{ else }}Just show me the parameter{{ end }}</h3>
+          <p>{{ if $zh }}CLI、配置项、API 与内置服务的准确入口。{{ else }}Exact entries for CLI, configuration, API, and built-in services.{{ end }}</p>
+          <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {{/* --------------------------------------------------------------- install */}}
+  <section class="piglet-install" id="install" aria-labelledby="install-title">
+    <div class="piglet-wrap piglet-install__grid">
+      <div class="piglet-install__copy" data-reveal>
+        <p class="piglet-eyebrow">{{ if $zh }}安装{{ else }}Install{{ end }}</p>
+        <h2 id="install-title">{{ if $zh }}一台机器。三条命令。开跑。{{ else }}One machine. Three commands. Run.{{ end }}</h2>
+        <ol class="piglet-steps">
+          <li><b>{{ if $zh }}装上 Pigsty{{ else }}Get Pigsty{{ end }}</b><span>{{ if $zh }}一条命令拉起安装器。{{ else }}One command pulls the installer.{{ end }}</span></li>
+          <li><b>{{ if $zh }}选择 vibe 配置{{ else }}Pick the vibe profile{{ end }}</b><span>{{ if $zh }}或者直接用工作台生成的 pigsty.yml。{{ else }}Or drop in the pigsty.yml from Config Studio.{{ end }}</span></li>
+          <li><b>{{ if $zh }}部署并启动工作空间{{ else }}Deploy and open the workspace{{ end }}</b><span>{{ if $zh }}数据库、存储、工具链一次到位。{{ else }}Database, storage, and toolchain come up together.{{ end }}</span></li>
+        </ol>
+        <div class="piglet-cta">
+          <a class="piglet-btn piglet-btn--primary" href="{{ relLangURL "docs/tutorial/install/" }}">{{ if $zh }}查看安装指南{{ else }}Installation guide{{ end }} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a class="piglet-btn piglet-btn--quiet" href="https://github.com/pgsty/pigsty" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+        </div>
+      </div>
+
+      <div class="piglet-terminal" data-reveal>
+        <div class="piglet-terminal__bar">
+          <span class="piglet-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <b>piglet@one-node:~</b>
+          <button type="button" data-copy-command aria-label="{{ if $zh }}复制命令{{ else }}Copy commands{{ end }}">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i>
+            <span data-copy-label data-copied="{{ if $zh }}已复制{{ else }}copied{{ end }}">{{ if $zh }}复制{{ else }}copy{{ end }}</span>
           </button>
         </div>
+        <pre><code><span class="t-c"># 1 · {{ if $zh }}装上 Pigsty{{ else }}get Pigsty{{ end }}</span>
+<span class="t-p">$</span> curl -fsSL https://repo.pigsty.io/get | bash
 
-        <div class="hero-buttons animate-fade-in-up animate-delay-300">
-          <a href="/docs/tutorial/install/" class="btn btn-primary">
-            <i class="fas fa-rocket"></i> {{ if eq .Site.Language.Lang "zh" }}立即安装{{ else }}Get Started{{ end }}
-          </a>
-          <a href="/docs/" class="btn btn-secondary">
-            <i class="fas fa-book"></i> {{ if eq .Site.Language.Lang "zh" }}查看文档{{ else }}Documentation{{ end }}
-          </a>
+<span class="t-c"># 2 · {{ if $zh }}生成 Piglet 配置{{ else }}generate the Piglet profile{{ end }}</span>
+<span class="t-p">$</span> cd ~/pigsty && ./configure -c vibe
+
+<span class="t-c"># 3 · {{ if $zh }}部署并启动工作空间{{ else }}deploy and open the workspace{{ end }}</span>
+<span class="t-p">$</span> ./deploy.yml && ./juice.yml && ./vibe.yml</code></pre>
+        <div class="piglet-terminal__foot">
+          <span><i aria-hidden="true"></i>{{ if $zh }}执行前请先审阅配置{{ else }}Review the config before you run it{{ end }}</span>
+          <span>Apache-2.0</span>
         </div>
-      </div>
-
-      <div class="hero-right animate-fade-in-up animate-delay-100">
-        <img src="/img/motherboard.gif" alt="Piglet Run Architecture" class="hero-image">
       </div>
     </div>
   </section>
 
-
-  <!-- Section 2: What is Piglet Run -->
-  <section class="landing-section pain-points" id="what">
-    <div class="landing-container">
-      <div class="section-header" data-reveal>
-        {{ if eq .Site.Language.Lang "zh" }}
-        <h2 class="section-title">什么是 Piglet Run？</h2>
-        {{ else }}
-        <h2 class="section-title">What is Piglet Run?</h2>
-        {{ end }}
-      </div>
-
-      <div class="pain-grid">
-        {{ if eq .Site.Language.Lang "zh" }}
-        <div class="pain-card" data-reveal>
-          <div class="pain-icon">🤖</div>
-          <h3 class="pain-title">AI 编码沙箱</h3>
-          <p class="pain-desc">预装 Claude Code、VS Code、Jupyter</p>
-          <p class="pain-detail">Python/Go/Node.js 开发环境开箱即用</p>
-        </div>
-
-        <div class="pain-card" data-reveal>
-          <div class="pain-icon">🐘</div>
-          <h3 class="pain-title">数据全能</h3>
-          <p class="pain-desc">PostgreSQL 18 + 400+ 扩展</p>
-          <p class="pain-detail">覆盖向量/时序/地理/图/分析</p>
-        </div>
-
-        <div class="pain-card" data-reveal>
-          <div class="pain-icon">💾</div>
-          <h3 class="pain-title">共享存储</h3>
-          <p class="pain-desc">JuiceFS 将工作目录存入数据库</p>
-          <p class="pain-detail">多 Agent / 多用户同时协作</p>
-        </div>
-        {{ else }}
-        <div class="pain-card" data-reveal>
-          <div class="pain-icon">🤖</div>
-          <h3 class="pain-title">AI Coding Sandbox</h3>
-          <p class="pain-desc">Pre-installed Claude Code, VS Code, Jupyter</p>
-          <p class="pain-detail">Python/Go/Node.js ready out of the box</p>
-        </div>
-
-        <div class="pain-card" data-reveal>
-          <div class="pain-icon">🐘</div>
-          <h3 class="pain-title">Data Powerhouse</h3>
-          <p class="pain-desc">PostgreSQL 18 + 400+ Extensions</p>
-          <p class="pain-detail">Vector, TimeSeries, Geo, Graph, Analytics</p>
-        </div>
-
-        <div class="pain-card" data-reveal>
-          <div class="pain-icon">💾</div>
-          <h3 class="pain-title">Shared Storage</h3>
-          <p class="pain-desc">JuiceFS stores workspace in database</p>
-          <p class="pain-detail">Multi-Agent / Multi-User collaboration</p>
-        </div>
-        {{ end }}
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Section 3: Core Features -->
-  <section class="landing-section features-zigzag" id="features">
-    <div class="landing-container">
-      <div class="section-header" data-reveal>
-        {{ if eq .Site.Language.Lang "zh" }}
-        <h2 class="section-title">核心特性</h2>
-        <p class="section-subtitle">专为 AI 时代打造的开发环境</p>
-        {{ else }}
-        <h2 class="section-title">Core Features</h2>
-        <p class="section-subtitle">Development environment built for the AI era</p>
-        {{ end }}
-      </div>
-
-      <!-- Feature 1: Time Machine -->
-      <div class="feature-row" data-reveal>
-        <div class="feature-content">
-          {{ if eq .Site.Language.Lang "zh" }}
-          <h4 class="feature-label"><span class="feature-emoji">⏱️</span> 时光机器</h4>
-          <h3 class="feature-title">一键回到任意时间点</h3>
-          <ul class="feature-list">
-            <li>数据库 <strong>PITR</strong> 时间点恢复</li>
-            <li>文件系统 <strong>快照</strong> 支持</li>
-            <li>AI 写坏代码？秒级回滚</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">告别删库跑路的恐惧</span>
-            <a href="/docs/concept/snapshot/" class="feature-link">
-              了解更多 <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ else }}
-          <h4 class="feature-label"><span class="feature-emoji">⏱️</span> Time Machine</h4>
-          <h3 class="feature-title">Restore to any point in time</h3>
-          <ul class="feature-list">
-            <li>Database <strong>PITR</strong> point-in-time recovery</li>
-            <li>File system <strong>snapshot</strong> support</li>
-            <li>AI broke your code? Roll back in seconds</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">Never fear data loss again</span>
-            <a href="/docs/concept/snapshot/" class="feature-link">
-              Learn more <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ end }}
-        </div>
-        <div class="feature-visual">
-          <pre class="feature-code"><span class="comment"># Show backup information</span>
-<span class="key">pig</span> <span class="string">pb</span> <span class="value">info</span>
-
-<span class="comment"># Restore to specific time</span>
-<span class="key">pig</span> <span class="string">pb</span> <span class="value">restore</span> <span class="string">-t "2025-01-29 10:00:00"</span></pre>
-        </div>
-      </div>
-
-      <!-- Feature 2: Instant Clone -->
-      <div class="feature-row feature-row--reverse" data-reveal>
-        <div class="feature-content">
-          {{ if eq .Site.Language.Lang "zh" }}
-          <h4 class="feature-label"><span class="feature-emoji">🔀</span> 瞬间克隆</h4>
-          <h3 class="feature-title">百毫秒级 Fork 巨型数据库</h3>
-          <ul class="feature-list">
-            <li><strong>Copy-on-Write</strong> 零拷贝克隆</li>
-            <li>1TB 数据库，100ms 克隆完成</li>
-            <li>多分支并行开发，互不干扰</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">像 Git 一样管理数据库</span>
-            <a href="/docs/concept/clone/" class="feature-link">
-              了解更多 <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ else }}
-          <h4 class="feature-label"><span class="feature-emoji">🔀</span> Instant Clone</h4>
-          <h3 class="feature-title">Fork TB-scale DB in ms</h3>
-          <ul class="feature-list">
-            <li><strong>Copy-on-Write</strong> zero-copy cloning</li>
-            <li>1TB database, 100ms to clone</li>
-            <li>Parallel branch development</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">Manage databases like Git</span>
-            <a href="/docs/concept/clone/" class="feature-link">
-              Learn more <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ end }}
-        </div>
-        <div class="feature-visual">
-          <pre class="feature-code"><span class="comment"># Create database from template</span>
-<span class="key">pig</span> <span class="string">pg</span> <span class="value">psql</span> <span class="string">-c "CREATE DATABASE dev TEMPLATE prod"</span>
-
-<span class="comment"># Or restore backup to new location</span>
-<span class="key">pig</span> <span class="string">pb</span> <span class="value">restore</span> <span class="string">--target-pgdata=/data/clone</span></pre>
-        </div>
-      </div>
-
-      <!-- Feature 3: One-Click Deploy -->
-      <div class="feature-row" data-reveal>
-        <div class="feature-content">
-          {{ if eq .Site.Language.Lang "zh" }}
-          <h4 class="feature-label"><span class="feature-emoji">🌐</span> 一键上线</h4>
-          <h3 class="feature-title">内置 Nginx 搞定一切</h3>
-          <ul class="feature-list">
-            <li>自动 <strong>域名绑定</strong> 与 <strong>SSL 证书</strong></li>
-            <li>反向代理，负载均衡</li>
-            <li>从开发到生产，一条命令</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">让你专注于代码，而非运维</span>
-            <a href="/docs/task/deploy/" class="feature-link">
-              了解更多 <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ else }}
-          <h4 class="feature-label"><span class="feature-emoji">🌐</span> One-Click Deploy</h4>
-          <h3 class="feature-title">Built-in Nginx Portal</h3>
-          <ul class="feature-list">
-            <li>Auto <strong>domain binding</strong> and <strong>SSL certificates</strong></li>
-            <li>Reverse proxy, load balancing</li>
-            <li>From dev to prod in one command</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">Focus on code, not ops</span>
-            <a href="/docs/task/deploy/" class="feature-link">
-              Learn more <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ end }}
-        </div>
-        <div class="feature-visual">
-          <pre class="feature-code"><span class="comment"># Check environment status</span>
-<span class="key">pig</span> <span class="string">status</span>
-
-<span class="comment"># Manage PostgreSQL</span>
-<span class="key">pig</span> <span class="string">pg</span> <span class="value">status</span>
-
-<span class="comment"># View logs</span>
-<span class="key">pig</span> <span class="string">pg</span> <span class="value">log</span> <span class="string">tail</span></pre>
-        </div>
-      </div>
-
-      <!-- Feature 4: Full Observability -->
-      <div class="feature-row feature-row--reverse" data-reveal>
-        <div class="feature-content">
-          {{ if eq .Site.Language.Lang "zh" }}
-          <h4 class="feature-label"><span class="feature-emoji">📊</span> 全栈监控</h4>
-          <h3 class="feature-title">VictoriaMetrics + Grafana</h3>
-          <ul class="feature-list">
-            <li><strong>3000+</strong> 监控指标，开箱即用</li>
-            <li>数据库、系统、应用全覆盖</li>
-            <li>Claude Code 专属监控面板</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">洞若观火，尽在掌握</span>
-            <a href="/docs/concept/monitor/" class="feature-link">
-              了解更多 <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ else }}
-          <h4 class="feature-label"><span class="feature-emoji">📊</span> Full Observability</h4>
-          <h3 class="feature-title">VictoriaMetrics + Grafana</h3>
-          <ul class="feature-list">
-            <li><strong>3000+</strong> metrics out of the box</li>
-            <li>Database, system, app coverage</li>
-            <li>Dedicated Claude Code dashboard</li>
-          </ul>
-          <div class="feature-cta">
-            <span class="feature-value">See everything, control everything</span>
-            <a href="/docs/concept/monitor/" class="feature-link">
-              Learn more <i class="fas fa-arrow-right"></i>
-            </a>
-          </div>
-          {{ end }}
-        </div>
-        <div class="feature-visual">
-          <img src="/img/dashboard.jpg" alt="Piglet Monitoring Dashboard" class="feature-image">
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- Section 4: Services Grid -->
-  <section class="landing-section ecosystem-section" id="services">
-    <div class="landing-container">
-      <div class="section-header" data-reveal>
-        {{ if eq .Site.Language.Lang "zh" }}
-        <h2 class="section-title">内置服务</h2>
-        <p class="section-subtitle">安装后即可访问</p>
-        {{ else }}
-        <h2 class="section-title">Built-in Services</h2>
-        <p class="section-subtitle">Available after installation</p>
-        {{ end }}
-      </div>
-
-      <div class="kernels-grid-new" data-reveal>
-        <a href="/docs/reference/vscode/" class="kernel-card-new">
-          <span class="kernel-icon-new"><i class="fas fa-code" style="font-size:2rem;color:#007ACC;"></i></span>
-          <span class="kernel-name-new">VS Code</span>
-          <span class="kernel-desc-new">http://ip/code</span>
-        </a>
-        <a href="/docs/reference/jupyter/" class="kernel-card-new">
-          <span class="kernel-icon-new"><i class="fas fa-flask" style="font-size:2rem;color:#F37626;"></i></span>
-          <span class="kernel-name-new">Jupyter</span>
-          <span class="kernel-desc-new">http://ip/jupyter</span>
-        </a>
-        <a href="/docs/reference/grafana/" class="kernel-card-new">
-          <span class="kernel-icon-new"><i class="fas fa-chart-line" style="font-size:2rem;color:#F46800;"></i></span>
-          <span class="kernel-name-new">Grafana</span>
-          <span class="kernel-desc-new">http://ip/ui</span>
-        </a>
-        <a href="/docs/reference/postgres/" class="kernel-card-new">
-          <span class="kernel-icon-new"><i class="fas fa-database" style="font-size:2rem;color:#336791;"></i></span>
-          <span class="kernel-name-new">PostgreSQL</span>
-          <span class="kernel-desc-new">postgres://ip:5432</span>
-        </a>
-        <a href="/docs/reference/nginx/" class="kernel-card-new">
-          <span class="kernel-icon-new"><i class="fas fa-server" style="font-size:2rem;color:#009639;"></i></span>
-          <span class="kernel-name-new">Nginx</span>
-          <span class="kernel-desc-new">http://ip/</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- Section 5: CTA -->
-  <section class="landing-section" id="cta" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 80px 0;">
-    <div class="landing-container" style="text-align: center;">
-      {{ if eq .Site.Language.Lang "zh" }}
-      <h2 class="section-title" style="color: white; margin-bottom: 1rem;">准备好开始了吗？</h2>
-      <p style="color: #a0aec0; font-size: 1.2rem; margin-bottom: 2rem;">
-        一条命令，开启你的 AI 编码之旅
-      </p>
-      {{ else }}
-      <h2 class="section-title" style="color: white; margin-bottom: 1rem;">Ready to get started?</h2>
-      <p style="color: #a0aec0; font-size: 1.2rem; margin-bottom: 2rem;">
-        One command to start your AI coding journey
-      </p>
-      {{ end }}
-      <div class="command-box" style="max-width: 600px; margin: 0 auto 2rem;">
-        <span class="command-prompt">$</span>
-        <code class="command-text">curl -fsSL https://repo.pigsty.io/get | bash</code>
-        <button class="command-copy" title="Copy">
-          <i class="fas fa-copy"></i>
-        </button>
-      </div>
-      <div class="hero-buttons" style="justify-content: center;">
-        <a href="/docs/tutorial/install/" class="btn btn-primary">
-          <i class="fas fa-rocket"></i> {{ if eq .Site.Language.Lang "zh" }}查看安装指南{{ else }}Installation Guide{{ end }}
-        </a>
-        <a href="https://github.com/pgsty" class="btn btn-secondary" target="_blank">
-          <i class="fab fa-github"></i> GitHub
-        </a>
-      </div>
-      <!-- Running Piglet Mascot -->
-      <img src="/img/logo/piglet256.png" alt="Running Piglet" style="width: 256px; height: auto; margin-top: 3rem; filter: drop-shadow(0 4px 24px rgba(232, 62, 140, 0.5));">
-    </div>
-  </section>
-
-
-  <!-- Footer -->
-  <footer style="background: #0f1419; padding: 40px 0; text-align: center; color: #718096;">
-    <div class="landing-container">
-      <p>
-        {{ if eq .Site.Language.Lang "zh" }}
-        Piglet Run 基于 <a href="https://pigsty.io" style="color: #E83E8C;">Pigsty</a> 构建，Apache 2.0 开源协议
-        {{ else }}
-        Piglet Run is built on <a href="https://pigsty.io" style="color: #E83E8C;">Pigsty</a>, Apache 2.0 License
-        {{ end }}
-      </p>
-      <p style="margin-top: 1rem;">
-        <a href="https://github.com/pgsty" style="color: #718096; margin: 0 10px;"><i class="fab fa-github"></i></a>
-        <a href="https://discord.gg/wDzt5VyWEz" style="color: #718096; margin: 0 10px;"><i class="fab fa-discord"></i></a>
-        <a href="https://t.me/joinchat/gV9zfZraNPM3YjFh" style="color: #718096; margin: 0 10px;"><i class="fab fa-telegram"></i></a>
-      </p>
-    </div>
-  </footer>
-
-
-  <!-- Scripts -->
-  <script>
-    // Copy command
-    document.querySelectorAll('.command-copy').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const code = this.parentElement.querySelector('.command-text').textContent;
-        navigator.clipboard.writeText(code);
-        this.innerHTML = '<i class="fas fa-check"></i>';
-        setTimeout(() => {
-          this.innerHTML = '<i class="fas fa-copy"></i>';
-        }, 2000);
-      });
-    });
-
-    // Mobile menu toggle
-    document.querySelector('.mobile-menu-toggle')?.addEventListener('click', function() {
-      document.querySelector('.mobile-menu').classList.toggle('active');
-      this.classList.toggle('active');
-    });
-
-    // Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
-  </script>
-
-</body>
-</html>
+  {{ partial "piglet/footer.html" . }}
+</div>
+{{ end }}

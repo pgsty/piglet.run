@@ -1,0 +1,38 @@
+{{- $zh := eq .Site.Language.Lang "zh" -}}
+<footer class="piglet-footer">
+  <div class="piglet-wrap piglet-footer__grid">
+    <div class="piglet-footer__brand">
+      <a href="{{ .Site.Home.RelPermalink }}" class="piglet-footer__lockup" aria-label="Piglet">
+        <img src="{{ "img/logo/piglet256.png" | relURL }}" alt="" width="40" height="40" loading="lazy">
+        <span><b>Piglet</b><small>{{ if $zh }}Agentic Postgres Runtime{{ else }}The agentic Postgres runtime{{ end }}</small></span>
+      </a>
+      <p>{{ if $zh }}从一台 Linux 主机，到人和 Agent 共享的完整世界。{{ else }}From one Linux machine to a complete world shared by humans and agents.{{ end }}</p>
+    </div>
+
+    <nav aria-label="{{ if $zh }}文档链接{{ else }}Documentation links{{ end }}">
+      <h2>{{ if $zh }}开始{{ else }}Start{{ end }}</h2>
+      <a href="{{ relLangURL "docs/tutorial/install/" }}">{{ if $zh }}安装 Piglet{{ else }}Install Piglet{{ end }}</a>
+      <a href="{{ relLangURL "docs/tutorial/quickstart/" }}">{{ if $zh }}快速上手{{ else }}Quickstart{{ end }}</a>
+      <a href="{{ relLangURL "docs/tutorial/claude/" }}">{{ if $zh }}接入 AI Agent{{ else }}AI agents{{ end }}</a>
+    </nav>
+
+    <nav aria-label="{{ if $zh }}项目链接{{ else }}Project links{{ end }}">
+      <h2>{{ if $zh }}项目{{ else }}Project{{ end }}</h2>
+      <a href="https://github.com/pgsty/pigsty" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://pigsty.io/" target="_blank" rel="noopener">Pigsty</a>
+      <a href="{{ relLangURL "docs/about/license/" }}">{{ if $zh }}开源协议{{ else }}License{{ end }}</a>
+    </nav>
+
+    <nav aria-label="{{ if $zh }}社区链接{{ else }}Community links{{ end }}">
+      <h2>{{ if $zh }}社区{{ else }}Community{{ end }}</h2>
+      <a href="https://github.com/orgs/pgsty/discussions" target="_blank" rel="noopener">{{ if $zh }}讨论区{{ else }}Discussions{{ end }}</a>
+      <a href="https://discord.gg/wDzt5VyWEz" target="_blank" rel="noopener">Discord</a>
+      <a href="mailto:rh@vonng.com">{{ if $zh }}联系维护者{{ else }}Contact{{ end }}</a>
+    </nav>
+  </div>
+
+  <div class="piglet-wrap piglet-footer__bottom">
+    <span>© {{ .Site.Params.copyright.from_year }}–{{ now.Year }} Pigsty &amp; Piglet Contributors</span>
+    <span>Apache-2.0 · {{ if $zh }}由{{ else }}built with{{ end }} <a href="https://oink.pgsty.com/" target="_blank" rel="noopener">Oink 0.6</a>{{ if $zh }} 驱动{{ end }}</span>
+  </div>
+</footer>

@@ -1,0 +1,9 @@
+{{- $outputFormat := lower (.Store.Get "tdOutputFormat" | default "html") -}}
+{{- if ne $outputFormat "print" }}
+<meta name="author" content="Pigsty & Piglet Contributors">
+<meta name="application-name" content="Piglet">
+{{- end }}
+{{- if and (ne $outputFormat "print") .IsHome }}
+<link rel="stylesheet" href="{{ "css/piglet.css" | relURL }}?v={{ substr (md5 (readFile "static/css/piglet.css")) 0 8 }}">
+<script>document.documentElement.classList.add("piglet-js");</script>
+{{- end }}
