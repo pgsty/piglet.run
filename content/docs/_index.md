@@ -1,14 +1,14 @@
 ---
-title: Documentation
+title: Piglet Documentation
 linkTitle: Docs
 weight: 10
-description: Piglet Run documentation - AI coding sandbox with PostgreSQL, JuiceFS, VS Code, and more.
+description: Build an AI-ready PostgreSQL workspace, understand how it works, and operate it with confidence.
 icon: fa-solid fa-book
 ---
 
-Welcome to **Piglet Run** documentation!
+Welcome to the **Piglet** documentation.
 
-Piglet Run is a lightweight runtime environment from Pigsty, designed as a cloud coding sandbox for AI Web Coding. It integrates PostgreSQL database, JuiceFS distributed storage, VS Code, JupyterLab, and more into a unified environment.
+Piglet is a lightweight runtime profile built on Pigsty. It turns one Linux machine into a shared environment for AI coding, PostgreSQL, durable storage, observability, and web delivery.
 
 ## Documentation Structure
 
@@ -32,8 +32,8 @@ Our documentation follows the **Diataxis** framework, organized into four catego
 
 | Feature | Description |
 |---------|-------------|
-| 🤖 AI Coding | Pre-installed Claude Code, VS Code, Jupyter, Python/Go/Node.js |
-| 🐘 Data Powerhouse | PostgreSQL 18 + 400+ extensions |
+| 🤖 AI Coding | Claude Code, OpenCode, VS Code, Jupyter, Python, Go, and Node.js |
+| 🐘 Data Powerhouse | PostgreSQL 18 with hundreds of available extensions |
 | 💾 Shared Storage | JuiceFS stores workspace in database |
 | ⏱️ Time Machine | Database PITR + filesystem snapshots |
 | 🔀 Instant Clone | Copy-on-Write database forking |
