@@ -331,11 +331,7 @@ html[data-bs-theme="light"] body.piglet-home {
 
 .piglet-hero {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: calc(100svh - 66px);
-  padding: clamp(54px, 6vw, 88px) 0 clamp(60px, 6vw, 96px);
+  padding: clamp(32px, 3.4vw, 52px) 0 clamp(40px, 4.2vw, 62px);
 }
 
 .piglet-backdrop {
@@ -399,7 +395,7 @@ html[data-bs-theme="light"] .piglet-backdrop__glow--blue {
   flex-wrap: wrap;
   align-items: center;
   gap: 9px;
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
 
 .piglet-hero__tag em {
@@ -459,15 +455,15 @@ html[data-bs-theme="light"] .piglet-backdrop__glow--blue {
 }
 
 .piglet-hero__copy .piglet-cta {
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 .piglet-figures {
   display: flex;
   flex-wrap: wrap;
   gap: 10px 34px;
-  margin: 34px 0 0;
-  padding-top: 24px;
+  margin: 28px 0 0;
+  padding-top: 20px;
   border-top: 1px solid var(--pl-line);
 }
 
@@ -730,9 +726,9 @@ html[data-bs-theme="light"] .piglet-machine {
 
 .piglet-studio {
   position: relative;
-  padding: clamp(78px, 8vw, 122px) 0;
+  padding: clamp(66px, 6.6vw, 104px) 0;
   border-top: 1px solid var(--pl-line);
-  background: var(--pl-ground-2);
+  background: var(--pl-ground);
 }
 
 .piglet-studio__head {
@@ -1219,8 +1215,9 @@ html[data-bs-theme="light"] .piglet-machine {
 /* ------------------------------------------------------------------- why */
 
 .piglet-why {
-  padding: clamp(78px, 8vw, 122px) 0;
+  padding: clamp(66px, 6.6vw, 104px) 0;
   border-top: 1px solid var(--pl-line);
+  background: var(--pl-ground-2);
 }
 
 .piglet-panels {
@@ -1476,7 +1473,7 @@ html[data-bs-theme="light"] .piglet-machine {
 /* ----------------------------------------------------------- observability */
 
 .piglet-observe {
-  padding: clamp(78px, 8vw, 122px) 0;
+  padding: clamp(66px, 6.6vw, 104px) 0;
   border-top: 1px solid var(--pl-line);
   background: var(--pl-ground-2);
 }
@@ -1575,7 +1572,7 @@ html[data-bs-theme="light"] .piglet-machine {
 /* -------------------------------------------------------------------- docs */
 
 .piglet-learn {
-  padding: clamp(78px, 8vw, 122px) 0;
+  padding: clamp(66px, 6.6vw, 104px) 0;
   border-top: 1px solid var(--pl-line);
 }
 
@@ -1640,7 +1637,7 @@ html[data-bs-theme="light"] .piglet-machine {
 /* ----------------------------------------------------------------- install */
 
 .piglet-install {
-  padding: clamp(78px, 8vw, 122px) 0;
+  padding: clamp(66px, 6.6vw, 104px) 0;
   border-top: 1px solid var(--pl-line);
   background: var(--pl-ground-2);
 }
