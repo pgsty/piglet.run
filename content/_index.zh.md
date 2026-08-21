@@ -1,5 +1,5 @@
 ---
-title: "Piglet — Agentic Postgres Runtime"
+title: "Piglet — 面向 Agent 的 Postgres 运行时"
 description: "一台 Linux 主机，开箱即用的 AI 编程、PostgreSQL 数据与上线环境。放心写，立刻上线。"
 url: "/zh/"
 weight: 1

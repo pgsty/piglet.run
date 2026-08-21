@@ -62,7 +62,7 @@
 
           <ol class="piglet-stack">
             <li class="piglet-layer" data-layer="web" style="--i: 3">
-              <b>WEB</b><span>Nginx portal · auto HTTPS</span><i>:443</i>
+              <b>WEB</b><span>{{ if $zh }}Nginx 门户 · 自动 HTTPS{{ else }}Nginx portal · auto HTTPS{{ end }}</span><i>:443</i>
             </li>
             <li class="piglet-layer" data-layer="dev" style="--i: 2">
               <b>DEV</b><span>VS&nbsp;Code · JupyterLab · Docker</span><i>/code</i>
@@ -71,7 +71,7 @@
               <b>AI</b><span>Claude Code · OpenCode · AGENTS.md</span><i>tty</i>
             </li>
             <li class="piglet-layer" data-layer="fs" style="--i: 0">
-              <b>FS</b><span>JuiceFS workspace</span><i>/fs</i>
+              <b>FS</b><span>{{ if $zh }}JuiceFS 工作空间{{ else }}JuiceFS workspace{{ end }}</span><i>/fs</i>
             </li>
           </ol>
 
@@ -184,7 +184,7 @@
       <figure class="piglet-screen" data-reveal>
         <div class="piglet-screen__bar">
           <span class="piglet-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <b>{{ if $zh }}监控台{{ else }}grafana{{ end }}</b>
+          <b>grafana</b>
           <em>LIVE</em>
         </div>
         <img src="{{ "img/dashboard.jpg" | relURL }}" width="2400" height="1148" loading="lazy"

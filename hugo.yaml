@@ -43,12 +43,6 @@ languages:
       time_format_default: 'January 02, 2006'
     menus:
       main:
-        - identifier: studio
-          name: Config Studio
-          url: /#studio
-          weight: 10
-          params:
-            icon: fa-solid fa-sliders
         - identifier: docs
           name: Docs
           pageRef: /docs
@@ -73,12 +67,6 @@ languages:
       time_format_default: '2006年01月02日'
     menus:
       main:
-        - identifier: studio
-          name: 配置工作台
-          url: /zh/#studio
-          weight: 10
-          params:
-            icon: fa-solid fa-sliders
         - identifier: docs
           name: 文档
           pageRef: /docs
