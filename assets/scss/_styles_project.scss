@@ -20,3 +20,23 @@
     flex: 0 1 380px !important;
   }
 }
+
+// Keep compact labels readable in narrow documentation tables.
+.td-content table {
+  th:first-child,
+  td:first-child {
+    word-break: keep-all;
+    white-space: nowrap;
+  }
+
+  th:first-child *,
+  td:first-child * {
+    white-space: nowrap;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .td-content table {
+    font-size: 0.88rem;
+  }
+}

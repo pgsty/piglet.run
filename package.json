@@ -1,11 +1,13 @@
 {
   "name": "piglet.run",
   "version": "1.0.0",
-  "description": "Piglet Run - PostgreSQL Cloud Environment Provisioning Service",
+  "description": "Piglet — the agentic Postgres runtime built on Pigsty",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check": "node --check static/js/piglet.js",
+    "build": "hugo build --minify --cleanDestinationDir",
+    "test": "npm run check"
   },
-  "keywords": ["postgresql", "pigsty", "cloud", "provisioning"],
+  "keywords": ["postgresql", "pigsty", "agentic", "ai", "hugo"],
   "author": "Ruohang Feng",
   "license": "Apache-2.0",
   "type": "commonjs",
