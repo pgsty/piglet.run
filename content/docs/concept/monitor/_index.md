@@ -46,4 +46,4 @@ Configure alerts for:
 ## Next Steps
 
 - See [Monitor Task](/docs/task/monitor/)
-- Learn about [Grafana Reference](/docs/reference/grafana/)
+- Learn about [Grafana Dashboards](/docs/task/monitor/#grafana-dashboards)

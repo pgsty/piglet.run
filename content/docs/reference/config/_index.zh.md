@@ -178,4 +178,4 @@ export PIG_LOGGING_LEVEL=debug
 ## 另请参阅
 
 - [CLI 参考](/docs/reference/cli/)
-- [PostgreSQL 配置](/docs/reference/postgres/)
+- [数据库教程](/zh/docs/tutorial/database/)

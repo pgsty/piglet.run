@@ -125,4 +125,4 @@ pig migrate verify --source postgres://source/db --target postgres://target/db
 ## 下一步
 
 - 了解[备份](/docs/task/backup/)
-- 理解 [PostgreSQL 配置](/docs/reference/postgres/)
+- 理解 [PostgreSQL 配置](/zh/docs/reference/config/#数据库配置)

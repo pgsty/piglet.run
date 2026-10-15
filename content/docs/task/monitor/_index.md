@@ -128,5 +128,5 @@ pig logs nginx
 
 ## Next Steps
 
-- Learn about [Grafana](/docs/reference/grafana/)
+- Learn about [Monitoring Concepts](/docs/concept/monitor/)
 - Understand [Architecture](/docs/concept/arch/)

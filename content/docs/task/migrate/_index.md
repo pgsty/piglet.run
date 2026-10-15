@@ -125,4 +125,4 @@ pig migrate verify --source postgres://source/db --target postgres://target/db
 ## Next Steps
 
 - Learn about [Backup](/docs/task/backup/)
-- Understand [PostgreSQL Configuration](/docs/reference/postgres/)
+- Understand [PostgreSQL Configuration](/docs/reference/config/#database-configuration)

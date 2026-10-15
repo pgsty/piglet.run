@@ -149,5 +149,5 @@ pig ext status                   # Check extensions
 ## See Also
 
 - [Configuration Reference](/docs/reference/config/)
-- [PostgreSQL Reference](/docs/reference/postgres/)
+- [Database Tutorial](/docs/tutorial/database/)
 - [Installation Tutorial](/docs/tutorial/install/)

@@ -128,5 +128,5 @@ pig logs nginx
 
 ## 下一步
 
-- 了解 [Grafana](/docs/reference/grafana/)
+- 了解 [监控概念](/zh/docs/concept/monitor/)
 - 理解[架构](/docs/concept/arch/)

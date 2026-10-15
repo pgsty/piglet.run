@@ -46,4 +46,4 @@ Piglet Run 包含基于 VictoriaMetrics 和 Grafana 的完整监控栈。
 ## 下一步
 
 - 查看 [监控任务](/docs/task/monitor/)
-- 了解 [Grafana 参考](/docs/reference/grafana/)
+- 了解 [Grafana 仪表盘](/zh/docs/task/monitor/#grafana-仪表盘)
