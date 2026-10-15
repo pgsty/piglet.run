@@ -18,7 +18,7 @@ services:
     ID: G-W57GPGG6XX
 
 #=======================================#
-# Oink 1.0.0
+# Oink 1.3.0
 #=======================================#
 module:
   proxy: direct
@@ -163,6 +163,8 @@ params:
   offline_search_max_results: 12
 
   ui:
+    preset: paper
+    preset_menu: [paper, slate, ink, terminal]
     quick_links: [docs]
     breadcrumb: true
     section_index: cards
