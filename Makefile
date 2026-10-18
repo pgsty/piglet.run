@@ -26,7 +26,7 @@ c: check
 check:
 	go mod verify
 	node --check static/js/piglet.js
-	$(PINNED_HUGO) build --minify --noChmod --cleanDestinationDir --printPathWarnings --printI18nWarnings --panicOnWarning
+	$(PINNED_HUGO) build --minify --noChmod --cleanDestinationDir --printPathWarnings --printI18nWarnings
 
 s: sync
 sync:

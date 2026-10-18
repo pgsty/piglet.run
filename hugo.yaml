@@ -18,13 +18,13 @@ services:
     ID: G-W57GPGG6XX
 
 #=======================================#
-# Oink 1.3.0
+# Oink 1.3.2
 #=======================================#
 module:
   proxy: direct
   hugoVersion:
     extended: true
-    min: "0.166.0"
+    min: "0.168.0"
   imports:
     - path: github.com/pgsty/oink
 
