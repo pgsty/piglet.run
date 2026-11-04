@@ -31,3 +31,4 @@ Each task guide focuses on accomplishing a specific goal:
 | [Migrate](/docs/task/migrate/) | Migrate data from other systems |
 | [Monitor](/docs/task/monitor/) | Set up alerts and monitoring |
 | [Upgrade](/docs/task/upgrade/) | Upgrade Piglet Run |
+{.wide .expand}

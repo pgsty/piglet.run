@@ -31,3 +31,4 @@ sidebar_expanded: true
 | [迁移](/docs/task/migrate/) | 从其他系统迁移数据 |
 | [监控](/docs/task/monitor/) | 设置告警和监控 |
 | [升级](/docs/task/upgrade/) | 升级 Piglet Run |
+{.wide .expand}
