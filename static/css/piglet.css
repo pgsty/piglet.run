@@ -1803,7 +1803,7 @@ html[data-bs-theme="light"] .piglet-machine {
 
 .piglet-footer__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(0, 1fr));
   gap: 36px;
 }
 
@@ -2040,7 +2040,7 @@ html.piglet-js [data-reveal].is-revealed {
   }
 
   .piglet-footer__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .piglet-footer__brand {

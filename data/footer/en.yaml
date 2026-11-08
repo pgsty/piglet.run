@@ -1,0 +1,22 @@
+brand:
+  name: Piglet
+  tagline: The agentic Postgres runtime
+columns:
+  - title: "Get started"
+    links:
+      - { label: "Documentation", url: "docs/" }
+      - { label: "Installation", url: "docs/tutorial/install/" }
+      - { label: "Quickstart", url: "docs/tutorial/quickstart/" }
+      - { label: "AI agents", url: "docs/tutorial/claude/" }
+  - title: "PG resources"
+    links:
+      - { label: "PG Center", url: "https://pg.center/docs/reference/", external: true }
+      - { label: "PGSQL.CC", url: "https://pgsql.cc/docs/", external: true }
+      - { label: "PIG", url: "https://pig.pgsty.com/", external: true }
+      - { label: "PGEXT.CLOUD", url: "https://pgext.cloud/", external: true }
+  - title: "Project ecosystem"
+    links:
+      - { label: "Pigsty", url: "https://pigsty.io/", external: true }
+      - { label: "Barn", url: "https://barn.pgsty.com/", external: true }
+      - { label: "GitHub", url: "https://github.com/pgsty/pigsty", external: true }
+      - { label: "License", url: "docs/about/license/" }

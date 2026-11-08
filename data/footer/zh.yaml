@@ -1,0 +1,22 @@
+brand:
+  name: Piglet
+  tagline: 面向 Agent 的 Postgres 运行时
+columns:
+  - title: "开始使用"
+    links:
+      - { label: "文档", url: "docs/" }
+      - { label: "安装", url: "docs/tutorial/install/" }
+      - { label: "快速上手", url: "docs/tutorial/quickstart/" }
+      - { label: "接入 Agent", url: "docs/tutorial/claude/" }
+  - title: "PG 资源"
+    links:
+      - { label: "PG 中文文档", url: "https://pgsql.cc/docs/", external: true }
+      - { label: "PG 知识图谱", url: "https://pg.center/docs/reference/", external: true }
+      - { label: "PIG", url: "https://pig.pgsty.com/zh/", external: true }
+      - { label: "PGEXT.CLOUD", url: "https://pgext.cloud/", external: true }
+  - title: "项目生态"
+    links:
+      - { label: "Pigsty", url: "https://pigsty.cc/", external: true }
+      - { label: "Barn", url: "https://barn.pgsty.com/zh/", external: true }
+      - { label: "GitHub", url: "https://github.com/pgsty/pigsty", external: true }
+      - { label: "开源协议", url: "docs/about/license/" }

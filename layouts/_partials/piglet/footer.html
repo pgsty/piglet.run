@@ -19,8 +19,21 @@
     <nav aria-label="{{ if $zh }}项目链接{{ else }}Project links{{ end }}">
       <h2>{{ if $zh }}项目{{ else }}Project{{ end }}</h2>
       <a href="https://github.com/pgsty/pigsty" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://pigsty.io/" target="_blank" rel="noopener">Pigsty</a>
+      <a href="{{ if $zh }}https://pigsty.cc/{{ else }}https://pigsty.io/{{ end }}" target="_blank" rel="noopener">Pigsty</a>
       <a href="{{ relLangURL "docs/about/license/" }}">{{ if $zh }}开源协议{{ else }}License{{ end }}</a>
+    </nav>
+
+    <nav aria-label="{{ if $zh }}PG 资源{{ else }}PG resources{{ end }}">
+      <h2>{{ if $zh }}PG 资源{{ else }}PG resources{{ end }}</h2>
+      {{ if $zh }}
+      <a href="https://pgsql.cc/docs/" target="_blank" rel="noopener" hreflang="zh">PG 中文文档</a>
+      <a href="https://pg.center/docs/reference/" target="_blank" rel="noopener" hreflang="en">PG 知识图谱</a>
+      {{ else }}
+      <a href="https://pg.center/docs/reference/" target="_blank" rel="noopener">PG Center</a>
+      <a href="https://pgsql.cc/docs/" target="_blank" rel="noopener" hreflang="zh">PGSQL.CC</a>
+      {{ end }}
+      <a href="https://pgext.cloud/" target="_blank" rel="noopener">PGEXT.CLOUD</a>
+      <a href="{{ if $zh }}https://barn.pgsty.com/zh/{{ else }}https://barn.pgsty.com/{{ end }}" target="_blank" rel="noopener">Barn</a>
     </nav>
 
     <nav aria-label="{{ if $zh }}社区链接{{ else }}Community links{{ end }}">
@@ -33,6 +46,6 @@
 
   <div class="piglet-wrap piglet-footer__bottom">
     <span>© {{ .Site.Params.copyright.from_year }}–{{ now.Year }} Pigsty &amp; Piglet Contributors</span>
-    <span>Apache-2.0 · {{ if $zh }}由{{ else }}built with{{ end }} <a href="https://oink.pgsty.com/" target="_blank" rel="noopener">Oink 1.5.0</a>{{ if $zh }} 驱动{{ end }}</span>
+    <span>Apache-2.0 · {{ if $zh }}由{{ else }}built with{{ end }} <a href="https://oink.pgsty.com/" target="_blank" rel="noopener">Oink 1.5.1</a>{{ if $zh }} 驱动{{ end }}</span>
   </div>
 </footer>

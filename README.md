@@ -1,6 +1,6 @@
 # Piglet Run
 
-Piglet 的 Hugo 站点，主题通过 `go.mod` 固定为 OINK v1.5.0；项目模板、样式和脚本保存在本站。
+Piglet 的 Hugo 站点，主题通过 `go.mod` 固定为 OINK v1.5.1；项目模板、样式和脚本保存在本站。
 
 ## 本地开发
 
